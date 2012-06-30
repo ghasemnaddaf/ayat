@@ -1,0 +1,16 @@
+<div id="ayat" align="right">
+<span id="ayat_text"> </span>
+<a id="ayat_tanzil_link"></a>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+ var AYATSERVER = "http://ayat.freehostingcloud.com/cgi-bin/ayat.php";
+ jQuery.support.cors = true; //prevent IE's "No Transport" Error.
+ $(document).ready( function(){
+	$.getJSON(AYATSERVER,{},function(ayat){
+		document.getElementById('ayat_text').innerHTML = ayat.text;
+		$("#ayat_tanzil_link").attr({"href":ayat.linkToTanzil, "target":"_blank"});
+		document.getElementById('ayat_tanzil_link').innerHTML = ayat.location;
+	});	 
+ });
+</script>
